@@ -3,7 +3,7 @@
 // First option (the most optimal)
 $value = 1;
 $color = match($value) {
-    1  => 'green',
+    1 => 'green',
     2 => 'red',
     3 => 'blue',
     4 => 'brown',
@@ -43,7 +43,7 @@ echo $color . PHP_EOL;
 
 
 // Third option
-$value = 1;
+$value = 4;
 if ($value === 1){
 	$color = 'green';
 }elseif ($value === 2) {
