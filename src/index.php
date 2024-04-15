@@ -1,22 +1,24 @@
 <?php
 
-function Calculation(int $number1, int $number2, ?closure $callback = null)
+function Calculation(int $number1, int $number2, ?closure $callback = null): int
 {
 	$multiplication = $number1 * $number2;
 	if (null !== $callback){
-		return $callback($multiplication);
+		$callback($multiplication);
 	}
 	return $multiplication;
 }
 
-$val1 = 15;
+$val1 = 5;
 $val2 = 10;
-$result =  Calculation($val1, $val1);
+$result =  Calculation($val1, $val2);
+echo $result . PHP_EOL;
 
 $function = function (int $result){
 	echo $result . PHP_EOL;
 };
 
+$result =  Calculation($val1, $val2, $function);
 //$function();
 //
 //$function = 'calculate';
