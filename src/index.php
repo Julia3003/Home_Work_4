@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 //Обчислення площі кола
 //First variation - функція повертає нове число
 function areaCalculation(int|float $radius):int|float
