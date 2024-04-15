@@ -1,65 +1,40 @@
 <?php
 
-// First option (the most optimal)
-$value = 1;
-$color = match($value) {
-    1 => 'green',
-    2 => 'red',
-    3 => 'blue',
-    4 => 'brown',
-    5 => 'violet',
-    6 => 'black',
-    default => 'white'
-};
-echo $color . PHP_EOL;
-
-
-
-// Second option
-$value = 10;
-switch ($value) {
-	case 1:
-	    $color = 'green';
-	    break;
-	case 2:
-	    $color = 'red';
-	    break;
-	case 3:
-		$color = 'blue';
-		break;
-	case 4:
-		$color = 'brown';
-		break;
-	case 5:
-		$color = 'violet';
-	    break;
-	case 6:
-		$color = 'black';
-	    break;
-	default:
-		$color = 'white';
+//First variation - функція повертає нове число
+function areaCalculation(int|float $radius):int|float
+{
+	$area = pi() * ($radius ** 2);
+	return $area;
 }
-echo $color . PHP_EOL;
 
+echo areaCalculation(8) . PHP_EOL;
 
-// Third option
-$value = 4;
-if ($value === 1){
-	$color = 'green';
-}elseif ($value === 2) {
-	$color = 'red';
-}elseif ($value === 3) {
-	$color = 'blue';
-}elseif ($value === 4) {
-	$color = 'brown';
-}elseif ($value === 5){
-	$color = 'violet';
-}elseif ($value === 6) {
-	$color = 'black';
-}else{
-	$color = 'white';
+//Second variation - функція змінює передане число
+function areaCalculationSecond(int|float &$radius2): void
+{
+	$radius2 = pi() * ($radius2 ** 2);
 }
-echo $color . PHP_EOL;
+$numberRadius2 = 8;
+areaCalculationSecond($numberRadius2);
+echo $numberRadius2 . PHP_EOL;
 
 
+//First variation - функція повертає нове число
+function power(int|float $number, int $power = 2):int|float
+{
+	return $number ** $power;
+}
 
+$myNumber = 5;
+$powerResult = power($myNumber);
+echo $powerResult . PHP_EOL;
+
+//Second variation - функція змінює передане число
+function powerSecond(int|float &$number, int $power = 2): void
+{
+	$number = $number ** $power;
+}
+
+$myNumber2 = 7;
+powerSecond($myNumber2);
+echo $myNumber2 . PHP_EOL;
