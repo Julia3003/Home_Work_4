@@ -50,7 +50,7 @@ function powerVarSecond(int|float $number, int $power):int|float
 
 $myNumber = 5;
 $degree = 3;
-$powerResult = power($myNumber, $degree);
+$powerResult = powerVarSecond($myNumber, $degree);
 echo $powerResult . PHP_EOL;
 
 //Second variation - всі аргументи обов'язкові
@@ -59,7 +59,7 @@ function powerVarSeconds(int|float &$number, int $power): void
 	$number = $number ** $power;
 }
 
-$myNumberSecond = 7;
-$degree2 = 2;
-powerSecond($myNumberSecond, $degree2);
+$myNumberSecond = 2;
+$degree2 = 3;
+powerVarSeconds($myNumberSecond, $degree2);
 echo $myNumberSecond . PHP_EOL;
