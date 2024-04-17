@@ -1,65 +1,34 @@
 <?php
+declare(strict_types=1);
 
-// First option (the most optimal)
-$value = 1;
-$color = match($value) {
-    1 => 'green',
-    2 => 'red',
-    3 => 'blue',
-    4 => 'brown',
-    5 => 'violet',
-    6 => 'black',
-    default => 'white'
-};
-echo $color . PHP_EOL;
+$variable = [];
+$variable = array();
+//
+////$array = [4 =>'elem1', 'elem2', 'elem3', 'elem4', 'elem5'];
+//
+//$array = ['elem1', 'elem2', 'elem3', 'elem4', 'elem5'];
+//
+//$array[10] = 'elem6';
+//
+////var_dump($array[2]);
+//
+//$assocArray = ['name' => 'Jim', 'age' => 25, 'location' => 'Odesa'];
+//echo $assocArray['name'] . PHP_EOL;
+//$assocArray['position'] = 'Developer';
+//$assocArray[] = 'test string';
+//
+//var_dump($assocArray);
 
-
-
-// Second option
-$value = 10;
-switch ($value) {
-	case 1:
-	    $color = 'green';
-	    break;
-	case 2:
-	    $color = 'red';
-	    break;
-	case 3:
-		$color = 'blue';
-		break;
-	case 4:
-		$color = 'brown';
-		break;
-	case 5:
-		$color = 'violet';
-	    break;
-	case 6:
-		$color = 'black';
-	    break;
-	default:
-		$color = 'white';
-}
-echo $color . PHP_EOL;
+//$multiArray = ['name' => 'Jim', 'age' => 25, 'location' => [
+//	'country' => 'Ukraine',
+//	'city' => 'Odessa',
+//	'coords' => [
+//		'lang' => -54,
+//		'lat' => 15
+//	]
+//]];
+//
+//echo $multiArray['location']['coords']['lang'] . PHP_EOL;
 
 
-// Third option
-$value = 4;
-if ($value === 1){
-	$color = 'green';
-}elseif ($value === 2) {
-	$color = 'red';
-}elseif ($value === 3) {
-	$color = 'blue';
-}elseif ($value === 4) {
-	$color = 'brown';
-}elseif ($value === 5){
-	$color = 'violet';
-}elseif ($value === 6) {
-	$color = 'black';
-}else{
-	$color = 'white';
-}
-echo $color . PHP_EOL;
-
-
-
+$array = [1,2,3,4,5];
