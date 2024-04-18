@@ -11,10 +11,10 @@ while ($i <= 10) {
 $i = 1;
 $result = 1;
 while ($i <= 5) {
-	$result *= $i++;
+	$result *= $i;
+	$i++;
 }
 echo $result . PHP_EOL;
-
 
 
 
