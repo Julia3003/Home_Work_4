@@ -81,8 +81,14 @@ foreach ($generator as $value) {
 ///
 ///
 
-function fibanachi ($number){
-	yield rand ($min, $max);
+
+$i = 0;
+$sum = 0;
+function fibanachi ($maxNumber) {
+	for($i = 0; $sum < $maxNumber; $i++){
+		yield $i + $sum;
+	}
+	
 }
 
 function generator(int $length = 10, int $min = 1, int $max = 10) : Generator
