@@ -83,9 +83,9 @@ foreach ($generator as $value) {
 
 
 $i = 0;
-$sum = 0;
+$j = 1;
 function fibanachi ($maxNumber) {
-	for($i = 0; $sum < $maxNumber; $i++){
+	for($i = 0; $sum < $maxNumber; $i++, $j++){
 		yield $i + $sum;
 	}
 	
