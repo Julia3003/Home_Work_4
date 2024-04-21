@@ -10,7 +10,7 @@ function generateArray(int $length = 10, int $min = 1, int $max = 10): array
 	}
 	echo max($array). PHP_EOL;
 	echo min($array) . PHP_EOL;
-	rsort($array);
+	sort($array);
 	return $array;
 }
 
