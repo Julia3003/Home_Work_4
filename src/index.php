@@ -23,7 +23,8 @@ foreach ($myArray as $value) {
 
 //Порахувати суму елементів масиву (2й варіант)
 $sum = 0;
-for ($i = 0; $i < count($myArray); $i++)
+$length = count($myArray);
+for ($i = 0; $i < $length; $i++)
 {
 	$sum += $myArray[$i];
 }
@@ -38,20 +39,23 @@ foreach ($myArray as $value) {
 echo $result . PHP_EOL;
 
 //Перевірте скільки раз число 5 зустрічається у вас в масиві.
-$result5 = 0;
+$countFive = 0;
 foreach ($myArray as $value) {
-	if($value === 5){
-		$result5++;
+	if ($value === 5) {
+		$countFive++;
 	}
 }
-	echo $result5 . PHP_EOL;
+echo $countFive . PHP_EOL;
 
+//Виведіть на екран тільки числа, які націло діляться на 3.
 foreach ($myArray as $value) {
 	if ($value % 3 === 0) {
-		echo $value;
+		echo $value . PHP_EOL;
 	}
 }
 
+// Альтернативне рішення з записом в масив чисел,
+// які націло діляться на 3 та виведенням на екран масиву цих чисел
 $newArray = [];
 foreach ($myArray as $value) {
 	if ($value % 3 === 0) {
