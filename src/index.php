@@ -10,6 +10,6 @@ function generator(int $maxNumber): Generator
 
 $result = generator(20);
 foreach ($result as $value) {
-	echo $value .PHP_EOL;
+	echo $value . PHP_EOL;
 }
 
