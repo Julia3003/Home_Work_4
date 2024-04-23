@@ -15,7 +15,7 @@ function generateArray(int $length = 10, int $min = 1, int $max = 10): array
 }
 
 $myArray = generateArray();
-var_dump($myArray);
+print_r($myArray);
 
 
 //2й варіант
