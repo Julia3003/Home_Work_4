@@ -33,21 +33,23 @@
 //
 //print_r(get_included_files());
 
-$path = '../info.txt';
-$file = fopen($path, 'w');
+$path = '..log.txt';
+$file = fopen($path, 'a');
 
-if (!file_exists($path)) {
-	echo 'Файла не існує';
-	return;
-}
-
-echo 'Введіть аргументи в консоль';
-$getConsole = fgets(STDIN);
+//if (!file_exists($path)) {
+//	echo 'Файла не існує';
+//	return;
+//}
+$getConsole = true;
 $content = [];
-while ($getConsole !== false) {
-	fwrite($file, $getConsole );
+echo 'Введіть аргументи в консоль' . PHP_EOL;
+while (($getConsole = trim(fgets(STDIN))) != false) {
+	var_dump($getConsole);
+	fwrite($file, $getConsole . PHP_EOL);
+	echo 'Введіть ще інформацію, якщо потрібно' . PHP_EOL;
 }
 fclose($file);
+
 
 //echo $getConsole;
 //$filesize = filesize($path);
@@ -56,5 +58,4 @@ fclose($file);
 //echo $getConsole;
 //$content = [];
 
-fclose($file);
-var_dump($content);
+var_dump($getConsole);
