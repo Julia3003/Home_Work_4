@@ -42,8 +42,9 @@ if (!file_exists($path)) {
 }
 
 echo 'Введіть аргументи в консоль';
+$getConsole = fgets(STDIN);
 $content = [];
-while ($getConsole = fgets(STDIN) !== false) {
+while ($getConsole !== false) {
 	fwrite($file, $getConsole );
 }
 fclose($file);
