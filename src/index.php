@@ -65,24 +65,24 @@
 //	echo "Останні аргументи попередньої програми, які були введені - $lastLine";
 //}
 
-$filePath = '../log.txt';
-$result = fileReader($filePath);
-echo $result;
-function fileReader(string $filePath): Generator|false {
+function fileReader(string $filePath): bool|Generator {
 	if (!file_exists($filePath)) {
 		return false;
 	}
 	$file = fopen($filePath, 'r');
-	if($file){
-		while(($line = fgets($file)) !== false) {
-			yield $line;
-			echo $line;
-		}
-		fclose($file);
-		echo 'Останні аргументи попередньої програми, які були введені: ' . $line;
+	while(($line = fgets($file)) != false) {
+		yield $line;
 	}
-	foreach (fileReader($filePath) as $line) {
-		echo $line;
-	}
+	fclose($file);
 }
 
+$filePath = '../log.txt';
+$result = fileReader($filePath);
+echo $result->current();
+//if ($result) {
+//	foreach ($result as $item) {
+//		echo($item);
+//	}
+//} else {
+//	echo 'Файла не існує.';
+//}
