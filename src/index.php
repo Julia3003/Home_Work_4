@@ -33,31 +33,56 @@
 //
 //print_r(get_included_files());
 
-$path = '../log.txt';
-$file = fopen($path, 'a');
+//1й варіант
+// Програма, яка приймає з консолі аргументи, які введені, і записує їх в файл
 
-$getConsole = true;
-$content = [];
-echo 'Введіть аргументи в консоль' . PHP_EOL;
-while (($getConsole = trim(fgets(STDIN))) != false) {
-	var_dump($getConsole);
-	fwrite($file, $getConsole . PHP_EOL);
-	echo 'Введіть ще інформацію, якщо потрібно. Якщо потрібно завершити - натисніть Enter' . PHP_EOL;
-}
-fclose($file);
-echo 'Інформація успішно записана в файл log.txt' . PHP_EOL;
+//$path = '../log.txt';
+//$file = fopen($path, 'a');
+//
+//$getConsole = true;
+//$content = [];
+//echo 'Введіть аргументи в консоль' . PHP_EOL;
+//while (($getConsole = trim(fgets(STDIN))) != false) {
+//	var_dump($getConsole);
+//	fwrite($file, $getConsole . PHP_EOL);
+//	echo 'Введіть ще інформацію, якщо потрібно. Якщо потрібно завершити - натисніть Enter' . PHP_EOL;
+//}
+//fclose($file);
+//echo 'Інформація успішно записана в файл log.txt' . PHP_EOL;
 
+//Програма, яка виводить з файлу логу останні аргументи попередньої програми, які були введені.
+//$path = '../log.txt';
+//$file = fopen($path, 'r');
+//$lastArguments = '';
+//if (!file_exists($path)) {
+//	return;
+//}
+//if($file){
+//	while(($line = fgets($file)) !== false) {
+//		$lastLine = $line;
+//	}
+//	fclose($file);
+//	echo "Останні аргументи попередньої програми, які були введені - $lastLine";
+//}
 
-$path = '../log.txt';
-$file = fopen($path, 'r');
-$lastArguments = '';
-if (!file_exists($path)) {
-	return;
-}
-if($file){
-	while(($line = fgets($file)) !== false) {
-		$lastLine = $line;
+$filePath = '../log.txt';
+$result = fileReader($filePath);
+echo $result;
+function fileReader(string $filePath): Generator|false {
+	if (!file_exists($filePath)) {
+		return false;
 	}
-	fclose($file);
-	echo "Останні аргументи попередньої програми, які були введені - $lastLine";
+	$file = fopen($filePath, 'r');
+	if($file){
+		while(($line = fgets($file)) !== false) {
+			yield $line;
+			echo $line;
+		}
+		fclose($file);
+		echo 'Останні аргументи попередньої програми, які були введені: ' . $line;
+	}
+	foreach (fileReader($filePath) as $line) {
+		echo $line;
+	}
 }
+
