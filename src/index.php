@@ -1,6 +1,6 @@
 <?php
 
-//$path = '../info.txt';
+//$path = '../log.txt';
 //
 //if (!file_exists($path)) {
 //	return;
@@ -33,29 +33,31 @@
 //
 //print_r(get_included_files());
 
-$path = '..log.txt';
+$path = '../log.txt';
 $file = fopen($path, 'a');
 
-//if (!file_exists($path)) {
-//	echo 'Файла не існує';
-//	return;
-//}
 $getConsole = true;
 $content = [];
 echo 'Введіть аргументи в консоль' . PHP_EOL;
 while (($getConsole = trim(fgets(STDIN))) != false) {
 	var_dump($getConsole);
 	fwrite($file, $getConsole . PHP_EOL);
-	echo 'Введіть ще інформацію, якщо потрібно' . PHP_EOL;
+	echo 'Введіть ще інформацію, якщо потрібно. Якщо потрібно завершити - натисніть Enter' . PHP_EOL;
 }
 fclose($file);
+echo 'Інформація успішно записана в файл log.txt' . PHP_EOL;
 
 
-//echo $getConsole;
-//$filesize = filesize($path);
-//$file = fopen($path, 'w');
-//$getConsole = fgets(STDIN);
-//echo $getConsole;
-//$content = [];
-
-var_dump($getConsole);
+$path = '../log.txt';
+$file = fopen($path, 'r');
+$lastArguments = '';
+if (!file_exists($path)) {
+	return;
+}
+if($file){
+	while(($line = fgets($file)) !== false) {
+		$lastLine = $line;
+	}
+	fclose($file);
+	echo "Останні аргументи попередньої програми, які були введені - $lastLine";
+}
