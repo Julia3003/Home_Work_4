@@ -1,12 +1,13 @@
 <?php
 // 1 варіант Програма, яка приймає з консолі аргументи, які введені, і записує їх в файл
 
-function getConsole1($path): bool
+function getConsole1(string $path): bool
 {
 	$file = fopen($path, 'a');
 	if (!file_exists($path)) {
 		return false;
 	}
+	$resultWrite = false;
 	while (($getConsole = trim(fgets(STDIN))) != false) {
 		$resultWrite = fwrite($file, $getConsole . PHP_EOL);
 	}
@@ -15,15 +16,14 @@ function getConsole1($path): bool
 }
 
 //2й варіант
-function getConsole2(string $fileMame, $getConsole): bool
+function getConsole2(string $fileName): bool
 {
 	$getConsole = trim(fgets(STDIN));
-	$result = file_put_contents($fileMame, $getConsole, FILE_APPEND);
-	var_dump($result);
-	if ($result !== false) {
-		return true;
+	$result = false;
+	if ($getConsole) {
+		$result = file_put_contents($fileName, $getConsole . PHP_EOL, FILE_APPEND);
 	}
-	return false;
+	return (bool) $result;
 }
 
 
@@ -46,9 +46,8 @@ function fileReade2(string $filePath): array|false
 	if (!file_exists($filePath)) {
 		return false;
 	}
-	$file = file_get_contents($filePath);
-	while ($file !== false) {
-		$resultValue = file($filePath);
+	$resultValue = file($filePath);
+	if (count($resultValue)) {
 		return $resultValue;
 	}
 	return false;

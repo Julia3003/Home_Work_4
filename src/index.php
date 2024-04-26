@@ -10,25 +10,25 @@ if($resultWrite !== false){
 	echo 'Інформація не записана в файл log.txt' . PHP_EOL;
 }
 
-$fileName = '../log.txt';
-$getConsole = fgets(STDIN);
-$results = getConsole2($fileName, $getConsole);
+echo 'Варіант 2. Введіть аргументи в консоль' . PHP_EOL;
+$results = getConsole2($path);
 if($results === false){
 	echo 'Інформація не записана в файл log.txt' . PHP_EOL;
 }
 	echo 'Інформація успішно записана в файл log.txt' . PHP_EOL;
 
 
-
+$result = '';
 foreach (fileReader('../log.txt') as $line){
-	$line;
+	$result = $line;
 }
-echo 'Останні аргументи попередньої програми, які були введені - ' . $line . PHP_EOL ;
+echo 'Останні аргументи попередньої програми, які були введені - ' . $result . PHP_EOL ;
 
 $filePath2 = '../log.txt';
 $resultReade2 = fileReade2($filePath2);
-$getValue = end($resultReade2);
-
-echo 'Останні аргументи попередньої програми, які були введені - ' . $getValue . PHP_EOL ;
-
-
+if (is_array($resultReade2)) {
+	$getValue = end($resultReade2);
+	echo 'Останні аргументи попередньої програми, які були введені - ' . $getValue . PHP_EOL ;
+} else {
+	echo 'Файл порожній' . PHP_EOL;
+}
