@@ -15,7 +15,7 @@ function getConsole1(string $path): bool
 	return (bool) $resultWrite;
 }
 
-//2й варіант
+//2й варіант Програма, яка приймає з консолі аргументи, які введені, і записує їх в файл
 function getConsole2(string $fileName): bool
 {
 	$getConsole = trim(fgets(STDIN));

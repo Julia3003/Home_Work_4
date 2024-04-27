@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../functions/functions.php';
+require_once __DIR__ . '/../functions/functions.php';
 
 $path = '../log.txt';
 echo 'Введіть аргументи в консоль' . PHP_EOL;
