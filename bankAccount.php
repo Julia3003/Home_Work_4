@@ -1,5 +1,4 @@
 <?php
-
 class bankAccount
 {
 	private int $accountNumber;
@@ -28,7 +27,7 @@ class bankAccount
 	public function setBalance(float|int $balance): void
 	{
 		if ($balance < 0){
-			return;
+			throw new Exception("Balance is incorrect, less than 0");
 		}
 		$this->balance = $balance;
 		
