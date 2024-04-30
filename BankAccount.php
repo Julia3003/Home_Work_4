@@ -1,19 +1,40 @@
 <?php
-class bankAccount
+class BankAccount
 {
-	private int $accountNumber;
-	private int|float $balance;
+	private string $accountNumber;
+	private int|float $balance = 0;
 	
-	public function __construct(int $accountNumber, int|float $balance)
+	private array $data = [];
+	
+	public function __set(string $sum, $value): void
+	{
+		$this-> data[$sum] = $value;
+	}
+	
+	public function __get(string $sum)
+	{
+		if (isset($this->data[$sum])) {
+			return $this->data[$sum];
+		}
+		return null;
+	}
+	
+	public function __construct(string $accountNumber, int|float $balance)
 	{
 		$this->setAccountNumber($accountNumber);
 		$this->setBalance($balance);
 	}
 	
+	public function showBalance(): void
+	{
+		echo $this->getBalance();
+	}
+	
+	
 	/**
 	 * @param int $accountNumber
 	 */
-	public function setAccountNumber(int $accountNumber): void
+	public function setAccountNumber(string $accountNumber): void
 	{
 		if ($accountNumber < 3) {
 			throw new Exception("Invalid number of account");
