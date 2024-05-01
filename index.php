@@ -4,7 +4,7 @@ require_once __DIR__ . '/BankAccount.php';
 
 $topUpAmount = 50;
 try {
-	$bankAccount = new BankAccount('12872503456', 5000453.45);
+	$bankAccount = new BankAccount('12872503456', -5000453.45);
 	$bankAccount->replenishmentAccount($topUpAmount);
 	echo 'Загальний баланс після поповнення рахунку номер ' . $bankAccount->getAccountNumber() . ' - ' . $bankAccount->getBalance() . PHP_EOL;
 	
