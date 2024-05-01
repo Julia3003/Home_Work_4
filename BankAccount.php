@@ -59,10 +59,10 @@ class BankAccount
 	
 	public function withdrawalCash(float|int $withdrawingAmount): void
 	{
-		if ($withdrawingAmount <= $this->balance) {
+		if ($withdrawingAmount > 0 & $withdrawingAmount != 0 & $withdrawingAmount <= $this->balance) {
 			$this->balance -= $withdrawingAmount;
 		} else {
-			throw new Exception("The withdrawal amount is more than the balance.");
+			throw new Exception("The withdrawal is 0 or less than 0/amount is more than the balance.");
 		}
 	}
 }
