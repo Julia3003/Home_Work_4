@@ -50,10 +50,10 @@ class BankAccount
 	
 	public function replenishmentAccount(float|int $topUpAmount): void
 	{
-		if ($topUpAmount != 0) {
+		if ($topUpAmount != 0 & $topUpAmount > 0) {
 			$this->balance += $topUpAmount;
 		} else {
-			throw new Exception("Top-up amount is 0");
+			throw new Exception("Top-up amount is 0 or less than 0");
 		}
 	}
 	
