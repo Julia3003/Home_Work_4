@@ -6,7 +6,7 @@ class TextOutput
 	
 	public function __construct(string $text)
 	{
-		$this->setText();
+		$this->setText() = $text;
 	}
 	
 	/**
