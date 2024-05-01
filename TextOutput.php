@@ -4,15 +4,15 @@ class TextOutput
 	private string $text = "some text";
 	
 	
-	public function __construct(string $text)
+	public function __construct()
 	{
-		$this->setText() = $text;
+		$this->setText();
 	}
 	
 	/**
 	 * @param string $text
 	 */
-	public function setText(string $text): void
+	public function setText(string $text = "some text"): void
 	{
 		$this->text = $text;
 	}
