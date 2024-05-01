@@ -5,7 +5,7 @@ class BankAccount
 	private int|float $balance;
 	
 	
-	public function __construct(string $accountNumber, int|float $balance = 0)
+	public function __construct(int $accountNumber, int|float $balance = 0)
 	{
 		$this->setAccountNumber($accountNumber);
 		$this->setBalance($balance);
@@ -48,7 +48,7 @@ class BankAccount
 		return $this->balance;
 	}
 	
-	public function replenishmentAccount($topUpAmount): void
+	public function replenishmentAccount(float|int $topUpAmount): void
 	{
 		if ($topUpAmount != 0) {
 			$this->balance += $topUpAmount;
@@ -57,9 +57,9 @@ class BankAccount
 		}
 	}
 	
-	public function withdrawalCash($withdrawingAmount): void
+	public function withdrawalCash(float|int $withdrawingAmount): void
 	{
-		if ($withdrawingAmount < $this->balance) {
+		if ($withdrawingAmount <= $this->balance) {
 			$this->balance -= $withdrawingAmount;
 		} else {
 			throw new Exception("The withdrawal amount is more than the balance.");
