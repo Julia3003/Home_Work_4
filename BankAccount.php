@@ -1,49 +1,28 @@
 <?php
 class BankAccount
 {
-	private string $accountNumber;
-	private int|float $balance = 0;
+	private int $accountNumber;
+	private int|float $balance;
 	
-	private array $data = [];
 	
-	public function __set(string $sum, $value): void
-	{
-		$this-> data[$sum] = $value;
-	}
-	
-	public function __get(string $sum)
-	{
-		if (isset($this->data[$sum])) {
-			return $this->data[$sum];
-		}
-		return null;
-	}
-	
-	public function __construct(string $accountNumber, int|float $balance)
+	public function __construct(string $accountNumber, int|float $balance = 0)
 	{
 		$this->setAccountNumber($accountNumber);
 		$this->setBalance($balance);
 	}
 	
-	public function showBalance(): void
-	{
-		echo $this->getBalance();
-	}
-	
-	
 	/**
 	 * @param int $accountNumber
 	 */
-	public function setAccountNumber(string $accountNumber): void
+	public function setAccountNumber(int $accountNumber): void
 	{
-		if ($accountNumber < 3) {
-			throw new Exception("Invalid number of account");
-		}
 		$this->accountNumber = $accountNumber;
 	}
 	
 	/**
 	 * @param float|int $balance
+	 * @return void
+	 * @throws Exception
 	 */
 	public function setBalance(float|int $balance): void
 	{
@@ -51,12 +30,8 @@ class BankAccount
 			throw new Exception("Balance is incorrect, less than 0");
 		}
 		$this->balance = $balance;
-		
 	}
 	
-	/**
-	 * @return int
-	 */
 	/**
 	 * @return int
 	 */
@@ -65,10 +40,6 @@ class BankAccount
 		return $this->accountNumber;
 	}
 	
-	
-	/**
-	 * @return float|int
-	 */
 	/**
 	 * @return float|int
 	 */
@@ -77,23 +48,21 @@ class BankAccount
 		return $this->balance;
 	}
 	
-	
-	
-	
-	public function getProperties(): void
+	public function replenishmentAccount($topUpAmount): void
 	{
-		echo $this->getAccountNumber() . PHP_EOL;
-		echo $this->getBalance() . PHP_EOL;
-		
-	}
-	public function replenishmentAccount()
-	{
-	
-	}
-	public function withdrawalCash()
-	{
-	
+		if ($topUpAmount != 0) {
+			$this->balance += $topUpAmount;
+		} else {
+			throw new Exception("Top-up amount is 0");
+		}
 	}
 	
-	
+	public function withdrawalCash($withdrawingAmount): void
+	{
+		if ($withdrawingAmount < $this->balance) {
+			$this->balance -= $withdrawingAmount;
+		} else {
+			throw new Exception("The withdrawal amount is more than the balance.");
+		}
+	}
 }
