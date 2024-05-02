@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/BankAccount.php';
 
-$topUpAmount = 50;
+$topUpAmount = -50;
 try {
 	$bankAccount = new BankAccount('12872503456');
 	$bankAccount->setBalance(10000.55);
