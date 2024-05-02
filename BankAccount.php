@@ -26,7 +26,7 @@ class BankAccount
 	 */
 	public function setBalance(float|int $balance): void
 	{
-		if ($balance < 0){
+		if ($balance < 0) {
 			throw new Exception("Balance is incorrect, less than 0");
 		}
 		$this->balance = $balance;
@@ -50,7 +50,7 @@ class BankAccount
 	
 	public function replenishmentAccount(float|int $topUpAmount): void
 	{
-		if ($topUpAmount != 0 && $topUpAmount > 0) {
+		if ($topUpAmount > 0) {
 			$this->balance += $topUpAmount;
 		} else {
 			throw new Exception("Top-up amount is 0 or less than 0");
@@ -59,7 +59,7 @@ class BankAccount
 	
 	public function withdrawalCash(float|int $withdrawingAmount): void
 	{
-		if ($withdrawingAmount > 0 && $withdrawingAmount != 0 && $withdrawingAmount <= $this->balance) {
+		if ($withdrawingAmount > 0 && $withdrawingAmount <= $this->balance) {
 			$this->balance -= $withdrawingAmount;
 		} else {
 			throw new Exception("The withdrawal is 0 or less than 0/amount is more than the balance.");
