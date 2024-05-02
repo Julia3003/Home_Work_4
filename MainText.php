@@ -1,7 +1,7 @@
 <?php
 class MainText
 {
-	protected string $text = "some text";
+	protected string $text;
 	
 	
 	public function __construct(string $text = "some text")
@@ -11,6 +11,8 @@ class MainText
 	
 	/**
 	 * @param string $text
+	 * @return void
+	 * @throws Exception
 	 */
 	public function setText(string $text): void
 	{

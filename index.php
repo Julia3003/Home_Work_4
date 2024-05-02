@@ -2,15 +2,14 @@
 
 require_once __DIR__ . '/MainText.php';
 require_once __DIR__ . '/Text.php';
+require_once __DIR__ . '/function/functions.php';
 
 try {
-	$mainText = new MainText();
-	echo $mainText->print() . PHP_EOL;
+	$mainText = new MainText('d');
+	showText($mainText);
 	
 	$newText = new Text();
-	if($newText instanceof MainText) {
-		echo $newText->print() . PHP_EOL;
-	}
+	showText($newText);
 } catch (Exception $exception) {
-
+	echo $exception->getMessage() . PHP_EOL;
 }
