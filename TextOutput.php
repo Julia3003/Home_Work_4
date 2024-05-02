@@ -4,7 +4,7 @@ class TextOutput
 	private string $text = "some text";
 	
 	
-	public function __construct($text)
+	public function __construct($text = "some text")
 	{
 		$this->setText();
 	}
