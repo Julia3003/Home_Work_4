@@ -1,7 +1,7 @@
 <?php
 class MainText
 {
-	protected string $text;
+	protected string $text = "some text";
 	
 	public function __construct(string $text = "some text")
 	{
