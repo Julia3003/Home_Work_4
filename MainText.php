@@ -3,7 +3,6 @@ class MainText
 {
 	protected string $text;
 	
-	
 	public function __construct(string $text = "some text")
 	{
 		$this->setText($text);
@@ -28,7 +27,7 @@ class MainText
 		return $this->text;
 	}
 	
-	private function validate(string $string)
+	private function validate(string $string): void
 	{
 		if(strlen($string) < 2) {
 			throw new Exception(message: 'Invalid string');

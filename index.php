@@ -5,7 +5,7 @@ require_once __DIR__ . '/Text.php';
 require_once __DIR__ . '/function/functions.php';
 
 try {
-	$mainText = new MainText('d');
+	$mainText = new MainText();
 	showText($mainText);
 	
 	$newText = new Text();
