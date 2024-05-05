@@ -3,7 +3,10 @@
 require_once __DIR__ . '/MainText.php';
 require_once __DIR__ . '/Text.php';
 require_once __DIR__ . '/Tasks.php';
+require_once __DIR__ . '/TaskState.php';
 require_once __DIR__ . '/function/functions.php';
+
+print_r(TaskState::cases());
 
 $tasks = new Tasks();
 //$taskList = $tasks->getTasks();

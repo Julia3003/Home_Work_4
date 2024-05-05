@@ -7,6 +7,8 @@ class Tasks
 	
 	protected string $fileName = 'tasks.txt';
 	
+	protected TaskState $stateTask;
+	
 	
 	/**
 	 * @param string $taskName
@@ -100,6 +102,21 @@ class Tasks
 		}
 		
 		file_put_contents($this->getFileName(), $tasksString);
+		var_dump($tasks);
 		return $tasks;
+		
 	}
+	
+	public function completeTask($taskId)
+	{
+		$tasks = $this->getTasks();
+		foreach ($tasks as $task) {
+			if($task[0] == $taskId) {
+				$this->TaskState::Done;
+			}
+		}
+	}
+	
+	
+	
 }
