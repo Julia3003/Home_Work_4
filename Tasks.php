@@ -119,7 +119,7 @@ class Tasks
 		$tasks = $this->getTasks();
 		foreach ($tasks as $task) {
 			if($task[0] == $taskId) {
-				$result = $this->setStateTask(stateTaskTaskState::Done);
+				$result = $this->setStateTask(stateTaskTaskState::Done->'done');
 			}
 		}
 	}
