@@ -46,6 +46,13 @@ class Tasks
 		$this->fileName = $fileName;
 	}
 	
+	/**
+	 * @param TaskState $stateTask
+	 */
+	public function setStateTask(TaskState $stateTask): void
+	{
+		$this->stateTask = $stateTask;
+	}
 	
 	/**
 	 * @return string
@@ -112,7 +119,7 @@ class Tasks
 		$tasks = $this->getTasks();
 		foreach ($tasks as $task) {
 			if($task[0] == $taskId) {
-				$this->TaskState::Done;
+				$result = $this->setStateTask(stateTaskTaskState::Done);
 			}
 		}
 	}
