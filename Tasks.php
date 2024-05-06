@@ -6,16 +6,15 @@ class Tasks
 	
 	protected int $priority;
 	
-	protected string $fileName = 'tasks.txt';
+	protected string $fileName;
+//	protected TaskState $stateTask = TaskState::NotDone;
 	
-	protected TaskState $stateTask = TaskState::NotDone;
+	protected array $tasksList;
 	
-	protected array $taskList = [];
-	
-	public function __construct()
+	public function __construct(string $fileName)
 	{
-		$this->taskList = $this->getTasks();
-		$this->fi
+		$this->setFileName($fileName);
+		$this->tasksList = $this->getTasks();
 	}
 	
 	/**
@@ -62,6 +61,7 @@ class Tasks
 		$this->stateTask = $stateTask;
 	}
 	
+	
 	/**
 	 * @return string
 	 */
@@ -87,60 +87,79 @@ class Tasks
 	}
 	
 	/**
-	 * @return TaskState
+	 * @return array
 	 */
-	public function getStateTask(): TaskState
+	public function getTasksList(): array
 	{
-		return $this->stateTask;
+		return $this->tasksList;
 	}
 	
-	public function addTask($taskName, $priority, $stateTask = TaskState::NotDone): bool
+//	/**
+//	 * @return TaskState
+//	 */
+//	public function getStateTask(): TaskState
+//	{
+//		return $this->stateTask;
+//	}
+	
+	public function addTask($taskName, $priority, $stateTask = TaskState::NotDone): void
 	{
+		if ($priority < 1 || $priority > 3) {
+			throw new Exception('Некоректно вказано пріорититет');
+		}
+
 		$taskId = uniqid();
-		$fileName = $this->getFileName();
-		return (bool)file_put_contents($fileName, "$taskId|$taskName|$priority|$stateTask->value\n", FILE_APPEND);
+		$this->tasksList[$taskId] = [
+			$taskName,
+			$priority,
+			$stateTask->value
+		];
 	}
-	
-	public function getTasks(): array
+
+	protected function getTasks(): array
 	{
 		$tasks = file($this->getFileName());
-		$taskArray = [];
+		$tasksList = [];
 		foreach ($tasks as $task) {
-			$taskArray[] = explode('|', $task);
+			$taskArray = explode('|', $task);
+			$tasksList[$taskArray[0]] = [
+				$taskArray[1],
+				$taskArray[2],
+				trim($taskArray[3])
+			];
 		}
-		usort($taskArray, function ($a, $b) {
-			return $b[2] <=> $a[2];
+		uasort($tasksList, function ($a, $b) {
+			return $b[1] <=> $a[1];
 		});
-		return $taskArray;
-		
-	}
-	public function deleteTask (string $taskId): bool
-	{
-		$tasks = array_filter($this->getTasks(), function ($task) use ($taskId) {
-			return $task[0] !== $taskId;
-		});
-		return $this->saveTaskInFile($tasks);
+		return $tasksList;
 	}
 	
-	public function completeTask($taskId): bool
+	public function deleteTask (string $taskId): void
 	{
-		$tasks = $this->getTasks();
-		foreach ($tasks as $key => $task) {
-			if($task[0] == $taskId) {
-				$tasks[$key][3] = TaskState::Done->value . PHP_EOL;
-			}
+		if (!array_key_exists($taskId, $this->tasksList)) {
+			throw new Exception('Завдання з вказаним id' . $taskId . 'не знайдено');
 		}
-		return $this->saveTaskInFile($tasks);
+		unset($this->tasksList[$taskId]);
 	}
 	
-	public function saveTaskInFile(array $tasks): bool
+	public function __destruct()
 	{
-		$tasksString = '';
-		foreach ($tasks as $task) {
-			$tasksString .= implode('|', $task);
+		$fileData = '';
+		foreach ($this->tasksList as $key => $task) {
+			$fileData .= $key . '|' . implode('|', $task) . PHP_EOL;
 		}
-		return (bool) file_put_contents($this->getFileName(), $tasksString);
-	}
-	
-	
+		file_put_contents($this->fileName, $fileData);
+    }
+
+//	public function completeTask($taskId): bool
+//	{
+//		$tasks = $this->getTasks();
+//		foreach ($tasks as $key => $task) {
+//			if($task[0] == $taskId) {
+//				$tasks[$key][3] = TaskState::Done->value . PHP_EOL;
+//			}
+//		}
+//		return $this->saveTaskInFile($tasks);
+//	}
+
 }

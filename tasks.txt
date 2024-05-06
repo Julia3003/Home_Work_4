@@ -1,12 +1,6 @@
-663884db6c2a3|Good deer|3|done
-66388bb1574ab|Good deer|3|notdone
-66388bb821949|Good deer|3|notdone
-66389fac8e0f0|Good deer|3|notdone
-6638a70b57546|Good deer|3|notdone
-6638a77306d01|Good deer|3|notdone
-6638a7e0e8d6f|Good deer|3|notdone
-6638a825b6071|Good deer|3|notdone
-6638a8458fdd6|Good deer|3|notdone
-6638a89e5fff4|Good deer|3|notdone
-6638a8c2c8faa|Good deer|3|notdone
-6638a8d1a6201|Good deer|3|notdone
+663952283552a|Bad day|3|not done
+66395270c40c8|Bad day|3|not done
+663952754cb6c|Bad day|3|not done
+66394e821b4f2|New day|2|not done
+66394e821b4f3|New day|2|not done
+6639527bedf0b|Bad day|3|not done
