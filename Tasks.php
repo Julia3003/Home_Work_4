@@ -3,12 +3,19 @@
 class Tasks
 {
 	protected string $taskName;
+	
 	protected int $priority;
 	
 	protected string $fileName = 'tasks.txt';
 	
-	protected TaskState $stateTask;
+	protected TaskState $stateTask = TaskState::NotDone;
 	
+	protected array $taskList = [];
+	
+	public function __construct()
+	{
+		$this->taskList = $this->getTasks();
+	}
 	
 	/**
 	 * @param string $taskName
@@ -78,11 +85,19 @@ class Tasks
 		return $this->fileName;
 	}
 	
-	public function addTask($taskName, $priority): bool
+	/**
+	 * @return TaskState
+	 */
+	public function getStateTask(): TaskState
+	{
+		return $this->stateTask;
+	}
+	
+	public function addTask($taskName, $priority, $stateTask = TaskState::NotDone): bool
 	{
 		$taskId = uniqid();
 		$fileName = $this->getFileName();
-		return (bool)file_put_contents($fileName, "$taskId|$taskName|$priority\n", FILE_APPEND);
+		return (bool)file_put_contents($fileName, "$taskId|$taskName|$priority|$stateTask->value\n", FILE_APPEND);
 	}
 	
 	public function getTasks(): array
@@ -98,32 +113,33 @@ class Tasks
 		return $taskArray;
 		
 	}
-	public function deleteTask (string $taskId): array
+	public function deleteTask (string $taskId): bool
 	{
 		$tasks = array_filter($this->getTasks(), function ($task) use ($taskId) {
 			return $task[0] !== $taskId;
 		});
+		return $this->saveTaskInFile($tasks);
+	}
+	
+	public function completeTask($taskId): bool
+	{
+		$tasks = $this->getTasks();
+		foreach ($tasks as $key => $task) {
+			if($task[0] == $taskId) {
+				$tasks[$key][3] = TaskState::Done->value . PHP_EOL;
+			}
+		}
+		return $this->saveTaskInFile($tasks);
+	}
+	
+	public function saveTaskInFile(array $tasks): bool
+	{
 		$tasksString = '';
 		foreach ($tasks as $task) {
 			$tasksString .= implode('|', $task);
 		}
-		
-		file_put_contents($this->getFileName(), $tasksString);
-		var_dump($tasks);
-		return $tasks;
-		
+		return (bool) file_put_contents($this->getFileName(), $tasksString);
 	}
-	
-	public function completeTask($taskId)
-	{
-		$tasks = $this->getTasks();
-		foreach ($tasks as $task) {
-			if($task[0] == $taskId) {
-				$result = $this->setStateTask(stateTaskTaskState::Done->'done');
-			}
-		}
-	}
-	
 	
 	
 }

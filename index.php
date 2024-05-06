@@ -6,19 +6,27 @@ require_once __DIR__ . '/Tasks.php';
 require_once __DIR__ . '/TaskState.php';
 require_once __DIR__ . '/function/functions.php';
 
-print_r(TaskState::cases());
+//print_r(TaskState::cases());
 
 $tasks = new Tasks();
-//$taskList = $tasks->getTasks();
-////var_dump($taskList);
-//
+$taskList = $tasks->getTasks();
+//var_dump($taskList);
+
 //if ($tasks->addTask('Good deer', 3)) {
 //	echo 'Завдання успішно додано в файл' . PHP_EOL;
 //} else {
 //	echo 'Завдання не додано' . PHP_EOL;
 //}
-$deleteTask = $tasks->deleteTask('66351163aef17');
-//var_dump($deleteTask);
+$taskId = '663884db6c2a3';
+if ($tasks->completeTask($taskId)) {
+	echo 'По Завданню ' . $taskId . ' статус змінено на ' . TaskState::Done->value . PHP_EOL;
+} else {
+	echo 'По Завданню ' . $taskId . ' статус не змінено' . PHP_EOL;
+}
+
+
+//$deleteTask = $tasks->deleteTask('66351163aef17');
+
 
 
 
