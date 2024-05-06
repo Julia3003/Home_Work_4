@@ -15,6 +15,7 @@ class Tasks
 	public function __construct()
 	{
 		$this->taskList = $this->getTasks();
+		$this->fi
 	}
 	
 	/**
