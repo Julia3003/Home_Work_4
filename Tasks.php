@@ -114,7 +114,7 @@ class Tasks
 	{
 		if (!array_key_exists($taskId, $this->tasksList)) {
 			throw new Exception('Завдання з вказаним id' . $taskId . 'не знайдено');
-		} $this->tasksList[$taskId][2] = TaskState::Done->value;
-		
+		}
+		$this->tasksList[$taskId][2] = TaskState::Done->value;
 	}
 }
