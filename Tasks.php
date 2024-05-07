@@ -78,6 +78,7 @@ class Tasks
 	protected function getTasks(): array
 	{
 		$tasks = file($this->getFileName());
+		var_dump($tasks);
 		$tasksList = [];
 		foreach ($tasks as $task) {
 			$taskArray = explode('|', $task);
@@ -115,5 +116,6 @@ class Tasks
 		if (!array_key_exists($taskId, $this->tasksList)) {
 			throw new Exception('Завдання з вказаним id' . $taskId . 'не знайдено');
 		} $this->tasksList[$taskId][2] = TaskState::Done->value . PHP_EOL;
+		
 	}
 }
