@@ -31,9 +31,9 @@ class Tasks
 	{
 		if ($priority < 1 || $priority > 3) {
 			throw new Exception(message: 'The priority can only have a value of 1,2,3:
-				- 1 - high priority;
+				- 3 - high priority;
 				- 2 - medium priority;
-				- 3 - low priority.'
+				- 1 - low priority.'
 			);
 		}
 	}
