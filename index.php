@@ -10,7 +10,7 @@ $taskList = $tasks->getTasksList();
 
 
 try {
-	$tasks->addTask('Nice day', 1);
+	$tasks->addTask('Nice day', 3);
 	echo 'Завдання успішно додано в файл' . PHP_EOL;
 } catch (Exception $exception) {
 	echo 'Завдання не додано. Помилка ' . $exception->getMessage() . PHP_EOL;

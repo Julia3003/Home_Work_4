@@ -9,7 +9,7 @@ class Tasks
 	public function __construct(string $fileName)
 	{
 		$this->setFileName($fileName);
-		$this->tasksList = $this->getTasks();
+		$this->tasksList = $this->getTaskListFromFile();
 	}
 	
 	/**
@@ -74,23 +74,28 @@ class Tasks
 			$stateTask->value
 		];
 	}
-
-	protected function getTasks(): array
+	
+	protected function getTaskListFromFile(): array
 	{
 		$tasks = file($this->getFileName());
-		$tasksList = [];
+		$taskList = [];
 		foreach ($tasks as $task) {
 			$taskArray = explode('|', $task);
-			$tasksList[$taskArray[0]] = [
+			$taskList[$taskArray[0]] = [
 				$taskArray[1],
 				$taskArray[2],
 				trim($taskArray[3])
 			];
 		}
-		uasort($tasksList, function ($a, $b) {
+		return $taskList;
+	}
+
+	protected function getTasks(): array
+	{
+		uasort($this->tasksList, function ($a, $b) {
 			return $b[1] <=> $a[1];
 		});
-		return $tasksList;
+		return $this->tasksList;
 	}
 	
 	public function deleteTask (string $taskId): void
@@ -104,13 +109,13 @@ class Tasks
 	public function __destruct()
 	{
 		$fileData = '';
-		foreach ($this->tasksList as $key => $task) {
+		foreach ($this->getTasks() as $key => $task) {
 			$fileData .= $key . '|' . implode('|', $task) . PHP_EOL;
 		}
 		file_put_contents($this->fileName, $fileData);
     }
 
-	public function completeTask($taskId)
+	public function completeTask($taskId): void
 	{
 		if (!array_key_exists($taskId, $this->tasksList)) {
 			throw new Exception('Завдання з вказаним id' . $taskId . 'не знайдено');
