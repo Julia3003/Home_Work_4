@@ -115,10 +115,10 @@ class Tasks
 		file_put_contents($this->fileName, $fileData);
     }
 
-	public function completeTask($taskId): void
+	public function completeTask(string $taskId): void
 	{
 		if (!array_key_exists($taskId, $this->tasksList)) {
-			throw new Exception('Завдання з вказаним id' . $taskId . 'не знайдено');
+			throw new Exception('Завдання з вказаним id' . $taskId . ' не знайдено');
 		}
 		$this->tasksList[$taskId][2] = TaskState::Done->value;
 	}
