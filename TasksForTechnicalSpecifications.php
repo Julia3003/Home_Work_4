@@ -1,6 +1,6 @@
 <?php
 
-class TaskTeam
+class TasksForTechnicalSpecifications
 {
 	protected string $taskName;
 	protected string $taskDescription;
@@ -15,7 +15,6 @@ class TaskTeam
 			'taskDescription' => $taskDescription
 		];
 	}
-	
 	/**
 	 * @param string $taskName
 	 */
@@ -48,9 +47,5 @@ class TaskTeam
 		return $this->taskDescription;
 	}
 	
-	public function showTask()
-	{
-		echo 'Назва задачі: ' . $this->getTaskName() . 'та опис задачі - ' . $this->getTaskDescription();
-	}
 	
 }
