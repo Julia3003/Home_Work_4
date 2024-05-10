@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/Math.php';
 require_once __DIR__ . '/Validator.php';
-require_once __DIR__ . '/Test1.php';
-require_once __DIR__ . '/Test2.php';
+require_once __DIR__ . '/TaskTeam.php';
+require_once __DIR__ . '/ReportMonth.php';
+require_once __DIR__ . '/ReviewYear.php';
 
 $test1 = new Test1;
 $test1->test();
