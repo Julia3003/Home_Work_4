@@ -2,6 +2,7 @@
 
 class TaskForTeamАnalyst
 {
+	use Validator;
 	protected string $taskName;
 	protected string $taskDescription;
 	

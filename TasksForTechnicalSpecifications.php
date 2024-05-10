@@ -2,6 +2,7 @@
 
 class TasksForTechnicalSpecifications
 {
+	use Validator;
 	protected string $taskName;
 	protected string $taskDescription;
 	
@@ -74,6 +75,11 @@ class TasksForTechnicalSpecifications
 	
 	public function getTasks(): array
 	{
-	
+		$tasks = file($this->getFileName());
+		$taskArray = [];
+		foreach ($tasks as $task) {
+			$taskArray[] = explode('|', $task);
+		}
+		return $taskArray;
 	}
 }
