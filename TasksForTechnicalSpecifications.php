@@ -5,6 +5,8 @@ class TasksForTechnicalSpecifications
 	protected string $taskName;
 	protected string $taskDescription;
 	
+	protected string $fileName = 'tasks.txt';
+	
 	protected array $taskList = [];
 	
 	public function __construct(string $taskName, string $taskDescription)
@@ -32,6 +34,14 @@ class TasksForTechnicalSpecifications
 	}
 	
 	/**
+	 * @param string $fileName
+	 */
+	public function setFileName(string $fileName): void
+	{
+		$this->fileName = $fileName;
+	}
+	
+	/**
 	 * @return string
 	 */
 	public function getTaskName(): string
@@ -47,5 +57,23 @@ class TasksForTechnicalSpecifications
 		return $this->taskDescription;
 	}
 	
+	/**
+	 * @return string
+	 */
+	public function getFileName(): string
+	{
+		return $this->fileName;
+	}
 	
+	public function addtask(string $taskName, string $taskDescription): bool
+	{
+		$tasId = uniqid();
+		$fileName = $this->getFileName();
+		return (bool) file_put_contents($fileName, "$tasId|$taskName|$taskDescription\n", FILE_APPEND);
+	}
+	
+	public function getTasks(): array
+	{
+	
+	}
 }
