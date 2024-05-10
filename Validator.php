@@ -7,7 +7,7 @@ trait Validator
 		return is_string($value);
 	}
 	
-	public function consistsOf(string $requiredWord)
+	public function consistsOf(string $requiredWord): bool
 	{
 		$result = str_word_count($requiredWord, $format = 0, $characters = null);
 		if(!$result) {
