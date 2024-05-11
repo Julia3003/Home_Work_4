@@ -7,13 +7,9 @@ trait Validator
 		return is_string($value);
 	}
 	
-	public function consistsOf(string $requiredWord): bool
+	public function consistsOf(string $stringForValidation, string $requiredWord): bool
 	{
-		$result = str_word_count($requiredWord, $format = 0, $characters = null);
-		if(!$result) {
-			throw new Exception('The word' . $requiredWord . 'is required');
-		}
-		return true;
+		return str_contains($stringForValidation, $requiredWord);
 	}
 	
 	public function isEmpty(string $value): bool

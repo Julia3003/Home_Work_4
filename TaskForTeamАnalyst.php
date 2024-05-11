@@ -3,18 +3,23 @@
 class TaskForTeamАnalyst
 {
 	use Validator;
+	
+	const MIN_LENGTH_TASK_NAME = 10;
+	const MIN_LENGTH_TASK_DESCRIPTION = 40;
+	const MAX_LENGTH_TASK_NAME = 35;
+	const MAX_LENGTH_TASK_DESCRIPTION = 950;
 	protected string $taskName;
 	protected string $taskDescription;
+	protected string $taskId;
 	
 	protected array $taskList = [];
 	
 	public function __construct(string $taskName, string $taskDescription)
 	{
-		$taskId = uniqid();
-		$this->taskList[$taskId] = [
-			'taskName' => $taskName,
-			'taskDescription' => $taskDescription
-		];
+		$this->validate($taskName,$taskDescription);
+		$this->taskId = uniqid();
+		$this->setTaskName($taskName);
+		$this->setTaskDescription($taskDescription);
 	}
 	
 	/**
@@ -22,13 +27,6 @@ class TaskForTeamАnalyst
 	 */
 	public function setTaskName(string $taskName): void
 	{
-		$minLength = 5;
-		$maxLength = 35;
-		if(!$this->checkString($taskName)) {
-			throw new Exception('Task description is invalid');
-		}elseif(!$this->minLength($taskName, $minLength) || !$this->maxLength($taskName, $maxLength) ) {
-			throw new Exception('Task name consists of less than . $minLength . characters and no more than . $maxLength . characters');
-		}
 		$this->taskName = $taskName;
 	}
 	
@@ -37,16 +35,6 @@ class TaskForTeamАnalyst
 	 */
 	public function setTaskDescription(string $taskDescription): void
 	{
-		$minLength = 15;
-		$maxLength = 355;
-		$requiredWord = 'Очікуємий результат від доопрацювання';
-		if(!$this->checkString($taskDescription)) {
-			throw new Exception('Task description is invalid');
-		} elseif(!$this->minLength($taskDescription, $minLength) || !$this->maxLength($taskDescription, $maxLength) ) {
-			throw new Exception('Task description consists of less than 5 characters and no more than 35 characters');
-		}elseif (!$this->consistsOf($requiredWord)) {
-			throw new Exception('В описі необхідно вказати - Очікуємий результат від доопрацюванняу');
-		}
 		$this->taskDescription = $taskDescription;
 	}
 	
@@ -66,9 +54,34 @@ class TaskForTeamАnalyst
 		return $this->taskDescription;
 	}
 	
-	public function showTask()
+	protected function validate(string $taskName, string $taskDescription): void
 	{
-		echo 'Назва задачі: ' . $this->getTaskName() . 'та опис задачі - ' . $this->getTaskDescription();
+		$message = '';
+		if (!$this->checkString($taskName)
+			|| !$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
+			|| !$this->minLength($taskName, self::MIN_LENGTH_TASK_NAME)
+		) {
+			$message .= 'The task name is must be a string and consists of less than '
+				. self::MIN_LENGTH_TASK_NAME . ' characters and no more than '
+				. self::MAX_LENGTH_TASK_NAME . ' characters ' . PHP_EOL;
+		}
+		if (!(!$this->checkString($taskDescription) || $this->maxLength($taskDescription, self::MAX_LENGTH_TASK_DESCRIPTION) || $this->minLength($taskDescription, self::MIN_LENGTH_TASK_DESCRIPTION))) {
+			$message .= 'The task description is must be a string and consists of less than ' . self::MIN_LENGTH_TASK_DESCRIPTION . ' characters and no more than ' . self::MAX_LENGTH_TASK_DESCRIPTION . ' characters ' . PHP_EOL;
+		}
+		if (!$this->isEmpty($message)) {
+			throw new Exception($message);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	public function showTask(): void
+	{
+		echo 'Задача id ' . $this->taskId . ' ,назва задачі - ' . $this->getTaskName() . ' та опис задачі - ' . $this->getTaskDescription() . PHP_EOL;
 	}
 	
 }

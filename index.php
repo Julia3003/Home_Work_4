@@ -4,38 +4,22 @@ require_once __DIR__ . '/TaskForTeamАnalyst.php';
 require_once __DIR__ . '/TasksForTechnicalSpecifications.php';
 require_once __DIR__ . '/ReviewYear.php';
 
-$test1 = new Test1;
-$test1->test();
+$taskName = 'To do analyst order analytics for April 2024';
+$taskDescription = 'Detailed analysis and segmentation of orders by category.';
 
-$test2 = new Test2;
-$test2->test();
+try {
+	$taskForTeamАnalyst = new TaskForTeamАnalyst($taskName, $taskDescription);
+	$taskForTeamАnalyst->showTask();
+} catch (Exception $exception) {
+	echo $exception->getMessage() . PHP_EOL;
+}
 
 
-
-//$fileName = 'tasks.txt';
-//$tasks = new Tasks($fileName);
-//$taskList = $tasks->getTasksList();
-//
-//
-//try {
-//	$tasks->addTask('Nice day', 3);
-//	echo 'Завдання успішно додано в файл' . PHP_EOL;
-//} catch (Exception $exception) {
-//	echo 'Завдання не додано. Помилка ' . $exception->getMessage() . PHP_EOL;
-//}
-//$taskId = '663a3fa078db5';
-//try {
-//	$tasks->completeTask($taskId);
-//	echo 'По Завданню ' . $taskId . ' статус змінено на ' . TaskState::Done->value . PHP_EOL;
-//} catch (Exception $exception) {
-//	echo 'По Завданню ' . $taskId . ' статус не змінено' . PHP_EOL;
-//}
-//
-//$taskId = '663d176e19bb8';
-//try {
-//	$tasks->deleteTask($taskId);
-//	echo 'Завдання ' . $taskId . ' успішно видалено' . PHP_EOL;
-//} catch (Exception $exception) {
-//	echo $exception->getMessage() . PHP_EOL;
-//}
-
+$fileName = 'task.txt';
+try {
+	$tasksForTechnicalSpecifications = new TasksForTechnicalSpecifications($fileName);
+	$tasksForTechnicalSpecifications->addTask($taskName, $taskDescription );
+	echo 'Задача додана успішно';
+} catch (Exception $exception) {
+	echo $exception->getMessage() . PHP_EOL;
+}
