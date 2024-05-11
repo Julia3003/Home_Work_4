@@ -3,6 +3,7 @@
 class TasksForTechnicalSpecifications
 {
 	use Validator;
+	
 	const MIN_LENGTH_TASK_NAME = 5;
 	const MIN_LENGTH_TASK_DESCRIPTION = 50;
 	const MAX_LENGTH_TASK_NAME = 50;
