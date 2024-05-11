@@ -66,15 +66,13 @@ class TasksForTechnicalSpecifications
 		if (!$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
 			|| !$this->minLength($taskName, self::MIN_LENGTH_TASK_NAME)
 		) {
-			$message .= 'The task name is must be a string and consists of less than '
-				. self::MIN_LENGTH_TASK_NAME . ' characters and no more than '
-				. self::MAX_LENGTH_TASK_NAME . ' characters ' . PHP_EOL;
+			$message .= 'The task name must contain no less than ' . self::MIN_LENGTH_TASK_NAME . ' characters and no more than '. self::MAX_LENGTH_TASK_NAME . ' characters ' . PHP_EOL;
 		}
 		if (!$this->maxLength($taskDescription, self::MAX_LENGTH_TASK_DESCRIPTION) || !$this->minLength($taskDescription, self::MIN_LENGTH_TASK_DESCRIPTION)) {
-			$message .= 'The task description is must be a string and consists of less than ' . self::MIN_LENGTH_TASK_DESCRIPTION . ' characters and no more than ' . self::MAX_LENGTH_TASK_DESCRIPTION . ' characters ' . PHP_EOL;
+			$message .= 'The task description must contain no less than ' . self::MIN_LENGTH_TASK_DESCRIPTION . ' characters and no more than ' . self::MAX_LENGTH_TASK_DESCRIPTION . ' characters ' . PHP_EOL;
 		}
 		if (!$this->consistsOf($taskDescription, $requiredWord)) {
-			$message .= 'В описі необхідно вказати ' . $requiredWord . PHP_EOL;
+			$message .= 'В описі до задачі необхідно вказати ' . $requiredWord . PHP_EOL;
 		}
 		if (!$this->isEmpty($message)) {
 			throw new Exception($message);

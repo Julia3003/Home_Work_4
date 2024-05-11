@@ -2,7 +2,6 @@
 require_once __DIR__ . '/Validator.php';
 require_once __DIR__ . '/TaskForTeamАnalyst.php';
 require_once __DIR__ . '/TasksForTechnicalSpecifications.php';
-require_once __DIR__ . '/ReviewYear.php';
 
 $taskName = 'To do analyst';
 $taskDescription = 'Detailed analysis and segmentation of orders by category';
@@ -20,7 +19,7 @@ $fileName = 'task.txt';
 try {
 	$tasksForTechnicalSpecifications = new TasksForTechnicalSpecifications($fileName);
 	$tasksForTechnicalSpecifications->addTask($taskName, $taskDescription );
-	echo 'Задача додана успішно' . PHP_EOL;
+	echo 'Задача додана успішно в файл ' . $fileName . PHP_EOL;
 } catch (Exception $exception) {
 	echo $exception->getMessage() . PHP_EOL;
 }
