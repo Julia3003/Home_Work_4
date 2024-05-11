@@ -57,8 +57,7 @@ class TaskForTeamАnalyst
 	protected function validate(string $taskName, string $taskDescription): void
 	{
 		$message = '';
-		if (!$this->checkString($taskName)
-			|| !$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
+		if (!$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
 			|| !$this->minLength($taskName, self::MIN_LENGTH_TASK_NAME)
 		) {
 			$message .= 'The task name is must be a string and consists of less than '
@@ -72,12 +71,6 @@ class TaskForTeamАnalyst
 			throw new Exception($message);
 		}
 	}
-	
-	
-	
-	
-	
-	
 	
 	public function showTask(): void
 	{

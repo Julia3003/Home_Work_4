@@ -1,0 +1,4 @@
+663f95466a543|To do analyst order analytics for April 2024|Detailed analysis and segmentation of orders by category. Expected result - report
+663f959de0f42|To do analyst order analytics for April 2024|Detailed analysis and segmentation of orders by category. Expected result - report.
+663f96b5bc232|To do analyst order analytics for April 2024|Detailed analysis and segmentation of orders by category. Expected result - report.
+663f96cf713e9|To do analyst order analytics for April 2024|Detailed analysis and segmentation of orders by category. Expected result - report.

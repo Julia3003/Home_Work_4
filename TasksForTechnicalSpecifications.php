@@ -63,15 +63,14 @@ class TasksForTechnicalSpecifications
 	protected function validate(string $taskName, string $taskDescription, string $requiredWord): void
 	{
 		$message = '';
-		if (!$this->checkString($taskName)
-			|| !$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
+		if (!$this->maxLength($taskName, self::MAX_LENGTH_TASK_NAME)
 			|| !$this->minLength($taskName, self::MIN_LENGTH_TASK_NAME)
 		) {
 			$message .= 'The task name is must be a string and consists of less than '
 				. self::MIN_LENGTH_TASK_NAME . ' characters and no more than '
 				. self::MAX_LENGTH_TASK_NAME . ' characters ' . PHP_EOL;
 		}
-		if (!(!$this->checkString($taskDescription) || $this->maxLength($taskDescription, self::MAX_LENGTH_TASK_DESCRIPTION) || $this->minLength($taskDescription, self::MIN_LENGTH_TASK_DESCRIPTION))) {
+		if (!$this->maxLength($taskDescription, self::MAX_LENGTH_TASK_DESCRIPTION) || !$this->minLength($taskDescription, self::MIN_LENGTH_TASK_DESCRIPTION)) {
 			$message .= 'The task description is must be a string and consists of less than ' . self::MIN_LENGTH_TASK_DESCRIPTION . ' characters and no more than ' . self::MAX_LENGTH_TASK_DESCRIPTION . ' characters ' . PHP_EOL;
 		}
 		if (!$this->consistsOf($taskDescription, $requiredWord)) {
