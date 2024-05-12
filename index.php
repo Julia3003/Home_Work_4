@@ -1,12 +1,18 @@
 <?php
 
-require_once __DIR__ . '/Person.php';
-require_once __DIR__ . '/TaskState.php';
+require_once __DIR__ . '/Figure.php';
+require_once __DIR__ . '/Rectangle.php';
+require_once __DIR__ . '/Circle.php';
 
-$person = new Person;
+$length = 10;
+$width = 5;
+$rectangle = new Rectangle ($length, $width);
+echo 'Довжина прямокутника - ' . $rectangle->getLength($length) . ' Ширина - ' . $rectangle->getWidth($width). ' Площа - ' . $rectangle->showInfoGetArea() . PHP_EOL;
 
-echo Person::$oldAge . PHP_EOL;
-echo Person::showOldAge() . PHP_EOL;
+
+$radius = 15;
+$circle = new Circle($radius);
+echo 'Радіус круга - ' . $circle->getRadius($radius) . ' Площа - ' . $circle->showInfoGetArea() . PHP_EOL;
 
 //$fileName = 'tasks.txt';
 //$tasks = new Tasks($fileName);

@@ -2,25 +2,19 @@
 
 abstract class Figure
 {
+	public abstract function area(): int|float;
 
-public abstract function area(): int|float
-{
+	public abstract function perimeter(): int|float;
 
-}
-
-public abstract function perimeter(): int|float
-{
-
-}
 	
-	public function getArea()
+	public function getArea(): string
 	{
-		echo 'The area is' . $this->area() . PHP_EOL;
+		return 'The area is ' . $this->area() . PHP_EOL;
 	}
 	
-	public function getPerimeter()
+	public function getPerimeter(): string
 	{
-		echo 'The perimeter is' . $this->perimeter() . PHP_EOL;
+		return 'The perimeter is ' . $this->perimeter() . PHP_EOL;
 	}
 
 }

@@ -38,15 +38,14 @@ class Circle extends Figure
 	{
 		return 2 * (self::PI) * ($this->radius);
 	}
-
-	public function getArea()
-	{
-		echo 'The area of the circle is' . $this->area() . PHP_EOL;
-	}
 	
-	public function getPerimeter()
+	public function showInfoGetArea()
 	{
-		echo 'The perimeter of the circle is' . $this->perimeter() . PHP_EOL;
+		echo parent::getArea();
+	}
+	public function showInfoGetPerimeter()
+	{
+		echo parent::getPerimeter();
 	}
 	
 }

@@ -16,10 +16,15 @@ class Rectangle extends Figure
 	 */
 	public function setLength(float|int $length): void
 	{
-		if ($length <= 0) {
-			throw new Exception('The length value must be greater than 0');
+		if (!$this->validate($length)) {
+			throw new Exception('The width value must be greater than 0');
 		}
 		$this->length = $length;
+	}
+	
+	protected function validate(float|int $value): bool
+	{
+		return $value > 0;
 	}
 	
 	/**
@@ -27,7 +32,7 @@ class Rectangle extends Figure
 	 */
 	public function setWidth(float|int $width): void
 	{
-		if ($width <= 0) {
+		if (!$this->validate($width)) {
 			throw new Exception('The width value must be greater than 0');
 		}
 		$this->width = $width;
@@ -59,7 +64,13 @@ class Rectangle extends Figure
 		return ($this->length + $this->width) * 2;
 	}
 	
-	echo parent::getArea();
-	echo parent::getPerimeter();
+	public function showInfoGetArea()
+	{
+		return parent::getArea();
+	}
+	public function showInfoGetPerimeter()
+	{
+		return parent::getPerimeter();
+	}
 	
 }
