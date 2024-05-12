@@ -31,7 +31,7 @@ class Circle extends Figure
 	
 	public function area(): int|float
 	{
-		return self::PI * (pow($this->radius, 2));
+		return (self::PI) * (pow($this->radius, 2));
 	}
 	
 	public function perimeter(): int|float
