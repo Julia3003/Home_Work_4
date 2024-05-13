@@ -3,13 +3,15 @@
 require_once __DIR__ . '/BankAccount.php';
 
 $topUpAmount = 0;
-try {
+try
+{ //порушення 12-го стандарту PSR, а саме: п. 5.6 try, catch, finally. Помилка: дужка { повинна розміщуватись на одному рядку з try через пробіл
 	$bankAccount = new BankAccount('12872503456');
 	$bankAccount->setBalance(10000.55);
 	$bankAccount->replenishment_account($topUpAmount);
 	echo 'Загальний баланс після поповнення рахунку номер ' . $bankAccount->getAccountNumber() . ' - ' . $bankAccount->getBalance() . PHP_EOL;
 	
-} catch (Exception $exception) {
+} catch(Exception $exception) //порушення 12-го стандарту PSR, а саме: п. 5.6 try, catch, finally. Помилка: між catch та дужкою повинен бути один пробіл.
+{ //порушення 12-го стандарту PSR, а саме: п. 5.6 try, catch, finally. Помилка: дужка { повинна розміщуватись на одному рядку з catch через пробіл
 	echo $exception->getMessage();
 }
 
