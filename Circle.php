@@ -41,11 +41,11 @@ class Circle extends Figure
 	
 	public function showInfoGetArea()
 	{
-		echo parent::getArea();
+		return parent::getArea();
 	}
 	public function showInfoGetPerimeter()
 	{
-		echo parent::getPerimeter();
+		return parent::getPerimeter();
 	}
 	
 }

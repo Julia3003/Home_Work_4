@@ -7,14 +7,14 @@ abstract class Figure
 	public abstract function perimeter(): int|float;
 
 	
-	public function getArea(): string
+	public function getArea(): int|float
 	{
-		return 'The area is ' . $this->area() . PHP_EOL;
+		return $this->area();
 	}
 	
-	public function getPerimeter(): string
+	public function getPerimeter(): int|float
 	{
-		return 'The perimeter is ' . $this->perimeter() . PHP_EOL;
+		return $this->perimeter();
 	}
 
 }

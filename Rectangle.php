@@ -64,11 +64,11 @@ class Rectangle extends Figure
 		return ($this->length + $this->width) * 2;
 	}
 	
-	public function showInfoGetArea()
+	public function showInfoGetArea(): int|float
 	{
 		return parent::getArea();
 	}
-	public function showInfoGetPerimeter()
+	public function showInfoGetPerimeter(): int|float
 	{
 		return parent::getPerimeter();
 	}
