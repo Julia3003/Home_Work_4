@@ -37,7 +37,7 @@ class Rectangle extends Figure
 		}
 		$this->width = $width;
 	}
-	
+
 	/**
 	 * @return float|int
 	 */
@@ -45,7 +45,7 @@ class Rectangle extends Figure
 	{
 		return $this->length;
 	}
-	
+
 	/**
 	 * @return float|int
 	 */
@@ -63,14 +63,14 @@ class Rectangle extends Figure
 	{
 		return ($this->length + $this->width) * 2;
 	}
-	
-	public function showInfoGetArea(): int|float
+
+	public function printArea(): void
 	{
-		return parent::getArea();
+		echo 'Площа - ' . parent::getArea() . PHP_EOL;
 	}
-	public function showInfoGetPerimeter(): int|float
+	public function printPerimeter(): void
 	{
-		return parent::getPerimeter();
+		echo 'Периметр - ' . parent::getPerimeter() . PHP_EOL;
 	}
 	
 }

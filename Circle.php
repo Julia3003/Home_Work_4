@@ -39,13 +39,13 @@ class Circle extends Figure
 		return 2 * (self::PI) * ($this->radius);
 	}
 	
-	public function showInfoGetArea()
+	public function printArea(): void
 	{
-		return parent::getArea();
+		echo 'Площа - ' . parent::getArea() . PHP_EOL;
 	}
-	public function showInfoGetPerimeter()
+	public function printPerimeter(): void
 	{
-		return parent::getPerimeter();
+		echo 'Периметр - ' . parent::getPerimeter() . PHP_EOL;
 	}
 	
 }
