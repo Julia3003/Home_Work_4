@@ -1,5 +1,5 @@
 <?php
-class BankAccount
+class bankAccount // порушення 1-го стандарту PSR, а саме: Class names must be declared in StudlyCaps.
 {
 	private int $accountNumber;
 	private int|float $balance;
@@ -48,11 +48,13 @@ class BankAccount
 		return $this->balance;
 	}
 	
-	public function replenishmentAccount(float|int $topUpAmount): void
+	public function replenishment_account(float|int $topUpAmount): void // порушення 1-го стандарту PSR, а саме: Method names must be declared in camelCase.
 	{
-		if ($topUpAmount > 0) {
+		if ($topUpAmount > 0)
+		{   //порушення 12-го стандарту PSR, а саме: п. 5.1
 			$this->balance += $topUpAmount;
-		} else {
+		} else
+		{ //порушення 12-го стандарту PSR, а саме: п. 5.1
 			throw new Exception("Top-up amount is 0 or less than 0");
 		}
 	}

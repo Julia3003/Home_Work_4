@@ -1,4 +1,4 @@
-<?php
+<? // порушує 1й стандарт PSR https://www.php-fig.org/psr/psr-1/
 
 require_once __DIR__ . '/BankAccount.php';
 
@@ -6,7 +6,7 @@ $topUpAmount = 0;
 try {
 	$bankAccount = new BankAccount('12872503456');
 	$bankAccount->setBalance(10000.55);
-	$bankAccount->replenishmentAccount($topUpAmount);
+	$bankAccount->replenishment_account($topUpAmount);
 	echo 'Загальний баланс після поповнення рахунку номер ' . $bankAccount->getAccountNumber() . ' - ' . $bankAccount->getBalance() . PHP_EOL;
 	
 } catch (Exception $exception) {
