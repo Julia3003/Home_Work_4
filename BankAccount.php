@@ -62,7 +62,7 @@ class bankAccount {// порушення 1-го стандарту PSR, а са�
 	public function withdrawalCash(float|int $withdrawingAmount): void
 	{
 		if ($withdrawingAmount > 0 && $withdrawingAmount <= $this->balance)
-		{ //порушення 12-го стандарту PSR, а саме: п. 5.1 if, elseif, else
+		{ //порушення 12-го стандарту PSR, а саме: п. 5.1 if, elseif, else. Помилка: дужка { повинна розміщуватись на одному рядку з if через пробіл після скобки )
 			$this->balance -= $withdrawingAmount;
 		} else { throw new Exception("The withdrawal is 0 or less than 0/amount is more than the balance."); //порушення 12-го стандарту PSR, а саме: п. 5.1 if, elseif, else. Помилка: тіло повинно розміщуватись на наступному рядку після дужки } та else.
 		}
