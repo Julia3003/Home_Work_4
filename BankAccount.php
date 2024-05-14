@@ -4,7 +4,6 @@ class BankAccount
 	private int $accountNumber;
 	private int|float $balance;
 	
-	
 	public function __construct(int $accountNumber, int|float $balance = 0)
 	{
 		$this->setAccountNumber($accountNumber);
