@@ -6,7 +6,7 @@ $topUpAmount = 0;
 try
 { //порушення 12-го стандарту PSR, а саме: п. 5.6 try, catch, finally. Помилка: дужка { повинна розміщуватись на одному рядку з try через пробіл
 	$bankAccount = new BankAccount('12872503456');
-	$bankAccount->setBalance(10000.55);
+	$bankAccount->setBalance (10000.55);//порушення 12-го стандарту PSR, а саме: не повинно бути пробілу перед скобкой (
 	$bankAccount->replenishment_account($topUpAmount);
 	echo 'Загальний баланс після поповнення рахунку номер ' . $bankAccount->getAccountNumber() . ' - ' . $bankAccount->getBalance() . PHP_EOL;
 	
