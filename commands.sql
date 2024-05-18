@@ -86,7 +86,7 @@ VALUES ('Jack', 'jake@gmail.com', 23, 'male', 'jacktesttestest'),
 
 
 SELECT * FROM `users`;
-SELECT `name`, `email` FROM users
+SELECT `name`, `email` FROM users;
 
 SELECT * FROM `users` WHERE `id` = 1;
 
