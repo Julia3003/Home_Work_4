@@ -23,8 +23,9 @@ try {
            ('Сreatine', 1097.05, 'sports nutrition', 'Increases strength and endurance')");
 	$stmt = $database->query("SELECT * FROM `products_in_warehouse`");
 	$result = $stmt->fetchAll();
+	print_r($result);
 	} catch (PDOException $exception) {
-	echo $exception->getMessage();
+		echo $exception->getMessage();
 	}
 
 	
