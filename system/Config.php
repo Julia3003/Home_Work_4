@@ -1,6 +1,6 @@
 <?php
-
 define('LOG_DIR', 'logs');
+
 define('DB_DRIVER', 'mysql');
 define('DB_PORT', 3306);
 define('DB_HOST', 'mysql');
