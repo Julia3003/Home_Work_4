@@ -2,15 +2,13 @@
 
 use database\Connect;
 
-define('APP_DIR', __DIR__ . '/');
-
 require_once 'system/Config.php';
 require_once 'database/Connect.php';
 
 try {
 	$database = Connect::getInstance();
 } catch (PDOException $exception) {
-	echo 'Сonnection to database unsuccessful' . $exception->getMessage() . PHP_EOL;
+	exit('Сonnection to database unsuccessful ' . $exception->getMessage() . PHP_EOL);
 }
 
 try {

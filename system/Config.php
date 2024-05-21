@@ -1,4 +1,6 @@
 <?php
+
+define('APP_DIR', __DIR__ . '/');
 define('LOG_DIR', 'logs');
 
 define('DB_DRIVER', 'mysql');
