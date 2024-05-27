@@ -6,7 +6,7 @@ networks:
 
 services:
   php:
-    build: /php
+    build: php
     volumes:
       - ./:/var/www/html
     ports:
