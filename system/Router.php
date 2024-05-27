@@ -27,11 +27,13 @@ class Router
 	private function dispatch(string $controllerAction): void
 	{
 		[$controller, $action] = explode('@', $controllerAction);
+
 		if (!isset($controller, $action)) {
 			throw new Exception('Invalid route declaration');
 		}
 
 		$fileName = CONTROLLERS_DIR . $controller . '.php';
+
 		if(!file_exists($fileName)) {
 			throw new Exception('Controller not found');
 		}

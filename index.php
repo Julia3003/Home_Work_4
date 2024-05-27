@@ -12,8 +12,8 @@ $router->addRoute('/front', [
 	'get' => 'FrontController@hello',
 	'post' => 'FrontController@sum',
 ]);
+$router->addRoute('/', [
+	'get' => 'IndexController@index',
+]);
 
-try {
-	$router->processRoute(Request::getUrl(), Request::getMethod());
-} catch (Exception $e) {
-}
+$router->processRoute(Request::getUrl(), Request::getMethod());

@@ -1,13 +1,14 @@
 <?php
+
 class FrontController
 {
 	public function hello(): void
 	{
-		echo 'Hello';
+		echo 'Hello 123';
 	}
 	
 	public function sum(): void
 	{
-		echo 'sum';
+		echo $_POST['first'] + $_POST['second'];
 	}
 }
