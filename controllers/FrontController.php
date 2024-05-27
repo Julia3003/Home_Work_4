@@ -1,15 +1,12 @@
 <?php
-
-namespace controllers;
-
 class FrontController
 {
-	public function hello()
+	public function hello(): void
 	{
 		echo 'Hello';
 	}
 	
-	public function sum()
+	public function sum(): void
 	{
 		echo 'sum';
 	}

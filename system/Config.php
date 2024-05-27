@@ -9,3 +9,4 @@ define('DB_HOST', 'mysql');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'password');
 define('DB_NAME', 'hillel');
+define('CONTROLLERS_DIR', APP_DIR . 'controllers/');

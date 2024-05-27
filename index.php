@@ -1,10 +1,10 @@
 <?php
 
-define('APP_DIR', __DIR__ . 'index.php/');
-
 require_once 'system/Config.php';
 require_once 'controllers/FrontController.php';
 require_once 'system/Request.php';
+require_once 'system/Router.php';
+require_once 'system/Response.php';
 
 $router = new Router();
 
@@ -13,9 +13,7 @@ $router->addRoute('/front', [
 	'post' => 'FrontController@sum',
 ]);
 
-//$router->addRoute('/login', [
-//	'get' => 'AuthController@login',
-//	'post' => 'AuthController@auth',
-//]);
-
-$router->processRoute(Request::getUrl(), Request::getMethod());
+try {
+	$router->processRoute(Request::getUrl(), Request::getMethod());
+} catch (Exception $e) {
+}

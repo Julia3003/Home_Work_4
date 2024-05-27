@@ -9,3 +9,9 @@ RUN apt-get update && \
     docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp && \
     docker-php-ext-install gd && \
     a2enmod rewrite
+
+RUN pecl install xdebug-3.3.2 \
+    && docker-php-ext-enable xdebug
+
+
+COPY ./xdebug.ini "${PHP_INI_DIR}/conf.d"

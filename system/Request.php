@@ -17,4 +17,33 @@ class Request
 	{
 		return strtolower($_SERVER['REQUEST_METHOD']);
 	}
+	public static function get(string $key, string $mode = 'string')
+	{
+		$data = [];
+		if (self::getMethod() == 'get') {
+			$data = $_GET;
+		} elseif (self::getMethod() == 'post') {
+			$data = $_POST;
+		}
+		
+		$value = $data[$key] ?? null;
+		
+		if (isset($value)) {
+			if ($mode == 'int') {
+				$value = filter_var($value,FILTER_SANITIZE_NUMBER_INT);
+			} else {
+				$value = filter_var($value,FILTER_SANITIZE_ADD_SLASHES);
+			}
+
+            $value = htmlspecialchars($value);
+			$value = strip_tags($value);
+		}
+		
+		return $value;
+	}
+	
+	public static function getReferer(): string
+	{
+		return $_SERVER['HTTP_REFERER'] ?? '';
+	}
 }

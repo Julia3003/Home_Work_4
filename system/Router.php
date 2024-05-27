@@ -20,25 +20,29 @@ class Router
 		if (!$controllerAction) {
 			Response::error404();
 		}
-		
+
 		$this->dispatch($controllerAction);
 	}
-	
+
 	private function dispatch(string $controllerAction): void
 	{
 		[$controller, $action] = explode('@', $controllerAction);
 		if (!isset($controller, $action)) {
 			throw new Exception('Invalid route declaration');
 		}
-		
+
 		$fileName = CONTROLLERS_DIR . $controller . '.php';
 		if(!file_exists($fileName)) {
 			throw new Exception('Controller not found');
 		}
-		
+
 		require_once $fileName;
 		
 		$controllerObject = new $controller();
+//		$controllerObject = new FrontController();
+		
 		$controllerObject->$action();
+//		$controllerObject->register();
 	}
+	
 }
