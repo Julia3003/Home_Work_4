@@ -16,8 +16,8 @@ class FrontController
 	 */
 	public function sum(): void
 	{
-		$num1 = $_POST['first'];
-		$num2 = $_POST['second'];
+		$num1 = (int) $_POST['first'];
+		$num2 = (int) $_POST['second'];
 		$this->validate($num1,$num2);
 		$message = 'Sum of numbers: ' . ($num1 + $num2)
 			. '<br><a href="/">Back</a>';
