@@ -5,7 +5,9 @@ class FrontController
 	use Validator;
 	public function hello(): void
 	{
-		echo 'Вітаю Вас в програмі!';
+		$message = 'Вітаю Вас в програмі!'
+			. '<br><a href="/">Back</a>';
+		echo $message;
 	}
 	
 	/**
@@ -17,14 +19,16 @@ class FrontController
 		$num1 = $_POST['first'];
 		$num2 = $_POST['second'];
 		$this->validate($num1,$num2);
-		echo $num1 + $num2;
+		$message = 'Sum of numbers: ' . ($num1 + $num2)
+			. '<br><a href="/">Back</a>';
+		echo $message;
 	}
 	
 	protected function validate(int $num1, int $num2): void
 	{
 		$message = '';
-		if (!$this->isInt($num1) || $this->isInt($num2)) {
-			$message .= 'The value must be a number.' . PHP_EOL;
+		if ($this->isEmpty($num1) || $this->isEmpty($num2)) {
+			$message .= 'The value is empty.' . PHP_EOL;
 		}
 		if (!$this->isEmpty($message)) {
 			throw new Exception($message);

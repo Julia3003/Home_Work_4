@@ -1,7 +1,5 @@
 <?php
 
-require_once 'system/Request.php';
-
 class Request
 {
 	public static function getUrl(): string

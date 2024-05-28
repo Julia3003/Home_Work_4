@@ -9,12 +9,13 @@ require_once 'controllers/FrontController.php';
 
 $router = new Router();
 
+$router->addRoute('/', [
+	'get' => 'IndexController@index',
+]);
+
 $router->addRoute('/front', [
 	'get' => 'FrontController@hello',
 	'post' => 'FrontController@sum',
-]);
-$router->addRoute('/', [
-	'get' => 'IndexController@index',
 ]);
 
 try {
