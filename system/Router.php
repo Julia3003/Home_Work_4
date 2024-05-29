@@ -41,10 +41,7 @@ class Router
 		require_once $fileName;
 		
 		$controllerObject = new $controller();
-//		$controllerObject = new FrontController();
 		
 		$controllerObject->$action();
-//		$controllerObject->register();
 	}
-	
 }

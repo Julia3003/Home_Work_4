@@ -3,6 +3,13 @@
 class FrontController
 {
 	use Validator;
+	
+	protected Request $request;
+	public function __construct()
+	{
+		$this->request = new Request();
+	}
+	
 	public function hello(): void
 	{
 		$message = 'Вітаю Вас в програмі!'
@@ -16,8 +23,8 @@ class FrontController
 	 */
 	public function sum(): void
 	{
-		$num1 = (int) $_POST['first'];
-		$num2 = (int) $_POST['second'];
+		$num1 = (int) $this->request->get('first');
+		$num2 = (int) $this->request->get('second');
 		$this->validate($num1,$num2);
 		$message = 'Sum of numbers: ' . ($num1 + $num2)
 			. '<br><a href="/">Back</a>';
@@ -34,4 +41,5 @@ class FrontController
 			throw new Exception($message);
 		}
 	}
+	
 }
