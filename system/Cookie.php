@@ -4,7 +4,10 @@ class Cookie
 {
 	public function createCookie(string $key, string $value, int $timeExpired): bool
 	 {
-		 if ($timeExpired > 0 && !setcookie($key, $value, time() + $timeExpired, '/')) {
+		 if ($timeExpired <= 0) {
+			 throw new Exception('Cookies not set. Time expired must be more than 0');
+		 }
+		 if (!setcookie($key, $value, time() + $timeExpired, '/')) {
 			 throw new Exception('Cookies not set');
 		 }
 		 return true;
@@ -20,12 +23,15 @@ class Cookie
 	
 	public function updateCookie(string $key, string $value, int $timeExpired): bool
 	{
-		if ($timeExpired > 0 && !setcookie($key, $value, time() + $timeExpired, '/')) {
+		if ($timeExpired <= 0) {
+			throw new Exception('Cookies not set. Time expired must be more than 0');
+		}
+		if (!setcookie($key, $value, time() + $timeExpired, '/')) {
 			throw new Exception('Сookies have not been edited');
 		}
 		return true;
 	}
-	
+
 	public function deleteCookie(string $key): bool
 	{
 		if (!setcookie($key, '', time() - 3600, '/')) {

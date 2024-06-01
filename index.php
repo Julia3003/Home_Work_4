@@ -10,7 +10,6 @@ $message = '';
 try {
 	$cookie->createCookie($key, $value, $timeExpired);
 	$message .= 'Cookie created successfully<br>';
-	echo 'hello'; // якщо поставити echo, то виникає помилка.
 } catch (Exception $exception) {
 	$message .= $exception->getMessage() . '<br>';
 }
@@ -22,19 +21,17 @@ try {
 	$message .= $exception->getMessage() . '<br>';
 }
 
-$key2 = 'index2';
 $value2 = 'spring2';
-$timeExpired2 = 7200;
 
 try {
-	$cookie->updateCookie($key2, $value2, $timeExpired2);
+	$cookie->updateCookie($key, $value2, $timeExpired);
 	$message .= 'Сookies successfully edited<br>';
 } catch (Exception $exception) {
 	$message .= $exception->getMessage() . '<br>';
 }
 
 try {
-	$cookie->deleteCookie($key2);
+	$cookie->deleteCookie($key);
 	$message .= 'Сookies successfully deleted<br>';
 } catch (Exception $exception) {
 	$message .= $exception->getMessage() . '<br>';
