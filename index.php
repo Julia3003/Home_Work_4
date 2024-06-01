@@ -21,15 +21,6 @@ try {
 	$message .= $exception->getMessage() . '<br>';
 }
 
-$value2 = 'spring2';
-
-try {
-	$cookie->updateCookie($key, $value2, $timeExpired);
-	$message .= 'Сookies successfully edited<br>';
-} catch (Exception $exception) {
-	$message .= $exception->getMessage() . '<br>';
-}
-
 try {
 	$cookie->deleteCookie($key);
 	$message .= 'Сookies successfully deleted<br>';
